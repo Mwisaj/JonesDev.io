@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap" rel="stylesheet">
+  <title>Jones Mwisa - Portfolio</title>
+  
+  <!-- Scripts & Styles -->
+  <script src="index.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <style>
+     body {
+            font-family: 'Inter', sans-serif;
+        }
+         body{
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 
+                20px 20px 60px #d1d5db,
+                -20px -20px 60px #ffffff;
+        }
+        
+    .animate-scroll {
+      animation: scroll 30s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .animate-typing {
+      animation: typing 4s steps(30, end) infinite;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+     @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .portfolio-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 
+                20px 20px 60px #d1d5db,
+                -20px -20px 60px #ffffff;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 
+                25px 25px 80px #d1d5db,
+                -25px -25px 80px #ffffff;
+        }
+           
+
+
+
+        
+        .image-overlay {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+  </style>
+  
+</head>
+
+<body id="body" class="bg-gray-100 text-gray-900 font-sans  ">
+
+<!-- Navbar -->
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-transparent">
+  <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    <div class="text-2xl font-black text-blue-500 tracking-wide">Mwísa.</div>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-6 text-lg text-white">
+      <li><a href="index (1).html" class="hover:text-blue-400 transition">Home</a></li>
+      <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+      <li><a href="#skills" class="hover:text-blue-400 transition">Skills</a></li>
+      <li><a href="#education" class="hover:text-blue-400 transition">Education</a></li>
+    </ul>
+
+    <!-- Hamburger Icon -->
+    <div class="md:hidden text-3xl text-white cursor-pointer z-50 relative" id="menu-btn">
+      <i class="fa fa-bars border-2 rounded-lg p-2"></i>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out z-40 md:hidden">
+    <div class="p-6 space-y-4 text-black">
+      <button id="close-menu" class="text-right w-full text-2xl text-gray-500">&times;</button>
+      <a href="index (1).html" class="block hover:text-blue-400 transition">Home</a>
+      <a href="#about" class="block hover:text-blue-400 transition">About</a>
+      <a href="#skills" class="block hover:text-blue-400 transition">Skills</a>
+      <a href="#education" class="block hover:text-blue-400 transition">Education</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // JavaScript to toggle the mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeMenuBtn = document.getElementById('close-menu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('-translate-x-full');
+  });
+
+  closeMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('-translate-x-full');
+  });
+</script>
+
+
+
+
+<!-- Hero Section -->
+<section class="relative h-screen bg-cover bg-center" style="background-image: url('images/JonesM.jpg');">
+  <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+   <div class="absolute top-10 left-10 w-32 h-32 bg-purple-80 rounded-full opacity-20 animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-24 h-24 bg-blue-200 rounded-full opacity-30 animate-float" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-pink-200 rounded-full opacity-25 animate-float" style="animation-delay: -4s;"></div>
+
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-20 ">
+    <h1 class="text-4xl md:text-5xl font-black text-white animate-fade-in-up" style="animation-delay: 0.2s;">
+      Hi, <span class="text-blue-500 to-purple-600  ">I'm</span> Jones Mwisa
+    </h1>
+
+    <div class="relative w-fit mx-auto mt-4">
+        <p class="text-white font-semibold  md:text-xl text-xl leading-relaxed max-w-3xl mx-auto  font-light animate-typing ">
+                   Web Developer | Creative Designer
+                </p>
+    </div>
+
+    <div class="flex justify-center space-x-6 text-3xl md:text-4xl mt-6">
+      <a href="www.linkedin.com/in/jones-mwisa-117a37294" target="_blank" class="text-white hover:text-gray-300 transition">
+        <i class="fa-brands fa-linkedin" style="color: aliceblue;"></i>
+      </a>
+      <a href="https://web.facebook.com/profile.php?id=61558736182897" target="_blank" class="text-white hover:text-gray-300 hover:text-blue-900 transition">
+        <i class="fa-brands fa-facebook" style="color: aliceblue;"></i>
+      </a>
+      <a href="https://github.com/Mwisaj" target="_blank" class="text-white hover:text-gray-300 transition">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="https://www.behance.net/jonesmwisa" target="_blank" class="text-white hover:text-gray-300 transition">
+        <i class="fa-brands fa-behance"></i>
+      </a>
+    </div>
+
+    <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 max-w-lg mx-auto">
+        <!-- Download CV Button -->
+       <a href="My Documents/JONES MWISA CV.docx"
+   download
+   class="group relative inline-flex items-center justify-center w-full sm:w-auto min-w-[150px] 
+          px-8 py-4 bg-white text-black font-semibold rounded-xl shadow-lg border 
+          hover:bg-black hover:text-white hover:shadow-xl hover:-translate-y-1 
+          transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-blue-300">
+
+   <span class="mr-3">Download CV</span>
+   <!-- Hover Overlay Effect -->
+   <div class="absolute inset-0 rounded-xl bg-gray-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+</a>
+
+
+        <!-- Hire Me Button -->
+        <a href="mailto:mwisajones2000@gmail.com" 
+           class="group relative w-full sm:w-auto min-w-[150px] inline-flex items-center justify-center px-8 py-4 
+                  bg-white text-gray-900 font-semibold 
+                  rounded-xl shadow-lg hover:shadow-xl 
+                    hover:border-white
+                  hover:bg-black hover:text-white
+                  transform hover:-translate-y-1 
+                  transition-all duration-300 ease-out
+                  border-1 border-black
+                  focus:outline-none focus:ring-4 focus:ring-white">
+            Hire Me
+            <div class="absolute inset-0 rounded-lg bg-gray-900 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+        </a>
+    </div>
+    <div class="down py-10 px-5"></div>
+        <i class="fa-sharp fa-solid fa-angle-down fa-bounce text-blue-100 text-6xl blur-l"></i>
+  </div>
+</section>
+
+<!-- Skills Section -->
+
+
+<section id="about" class="relative bg-gray-50 py-25 rounded-3xl mx-3 my-5 overflow-hidden">
+    <!-- About Section -->
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <!-- Status badge -->
+           <div class="flex justify-center">
+    <div class="inline-flex text-center items-center px-3 py-3 bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 mb-10 shadow-lg">
+        <div class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+        <span class="text-sm font-semibold text-blue-400 tracking-wide">Available For Opportunities</span>
+    </div>
+</div>
+
+            
+            
+            <!-- Main content container -->
+            <div class="bg-white bg-opacity-5 backdrop-blur-lg rounded-3xl p-12 md:p-16 border border-white border-opacity-10 shadow-xl hover:bg-opacity-10 hover:border-opacity-20 transition-all duration-500 hover:transform hover:-translate-y-2">
+                
+                <!-- Heading -->
+                <h1 class="text-4xl md:text-3xl text-center  font-black text-gray-800 mb-6">About Me</h1>
+                 <div class="relative w-20 h-20 mx-auto bg-blue-300 rounded-full flex items-center justify-center mb-5">
+    <!-- Spiky badge background (blurred pulse effect) -->
+    <div class="absolute w-full h-full rounded-full bg-blue-500 blur-sm animate-pulse z-0"></div>
+
+    <!-- White checkmark -->
+    <svg class="w-10 h-10 text-white z-10" fill="none" stroke="currentColor" stroke-width="6" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  </div>
+                
+                <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-0 left-4/4 w-96 h-96 bg-blue-600 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-80  bg-purple-600 rounded-full blur-3xl"></div>
+        </div>
+                
+
+                
+               <!-- Main description container -->
+<div class="flex justify-center px-4">
+  <p class="text-gray-800 md:text-2xl text-xl leading-relaxed max-w-3xl text-center mb-16 font-light">
+    I'm a passionate <span class="text-gray-500 font-bold">ICT Specialist</span>, recently graduated with a Diploma in Information Technology from 
+    <span class="text-blue-400 font-bold">Evelyn Hone College</span>. I'm eager to learn and contribute to innovative ICT solutions that shape our digital future.
+  </p>
+</div>
+
+               
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto text-center px-6 mt-12">
+    <h1 id="skills" class="text-4xl md:text-3xl font-black text-gray-800 mb-6">My Skills</h1>
+    <p class="text-gray-800 md:text-2xl text-xl leading-relaxed max-w-3xl mx-auto mb-16 font-light">
+                    I have a strong foundation in essential technologies including <span class=" text-gray-800">HTML</span>, <span class=" text-gray-800">CSS</span>, <span class="text-gray-800">JavaScript</span>, and <span class="text-gray-800">Node.js</span>.
+                </p>
+   
+
+    <div class="flex flex-wrap justify-center gap-10 mb-16">
+      <div class="flex flex-col items-center">
+        <i class="fa-brands fa-html5 text-orange-600 text-6xl"></i>
+        <span class="mt-3 text-md font-medium text-gray-700"></span>
+      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa-brands fa-css3-alt text-blue-500 text-6xl"></i>
+        <span class="mt-3 text-md font-medium text-gray-700"></span>
+      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa-brands fa-js text-yellow-400 text-6xl"></i>
+        <span class="mt-3 text-md font-medium text-gray-700"></span>
+      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa-brands fa-node-js text-green-600 text-6xl"></i>
+        <span class="mt-3 text-md font-medium text-gray-700"></span>
+      </div>
+    </div>
+   
+    
+
+    <div class="bg-gray-50 mt-12 rounded-3xl p-12 loading stagger-5">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-20 animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-24 h-24 bg-blue-200 rounded-full opacity-30 animate-float" style="animation-delay: -2s;"></div>
+      
+                <h3 class="text-3xl font-black text-gray-800 mb-8">What I Do</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-green-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Web Development</h4>
+                        <p class="text-xl text-slate-600  max-w-2xl mx-auto leading-relaxed font-light">Creating responsive and modern websites</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-palette text-blue-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Graphic Design</h4>
+                        <p class="text-xl font-light text-slate-600 max-w-2xl mx-auto leading-relaxed">Designing visually appealing graphics</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-tools text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Hardware Maintenance</h4>
+                        <p class="text-xl font-light text-slate-600 max-w-2xl mx-auto leading-relaxed ">Computer hardware support and CCTV installation</p>
+                    </div>
+                </div>
+            </div>
+
+    
+    
+       
+      </section>
+  
+
+<section class="relative py-15 bg-cover bg-white bg-center mx-6 my-10 rounded-2xl text-center" style="background-image: url('images/🚀 Web Development Starter Pack – Essential Resources & Templates for Beginners.png');">
+  <div class="absolute inset-0 bg-black bg-opacity-70 rounded-2xl"></div>
+  <div class="relative z-10 container mx-auto px-4 py-12">
+    <div class="rounded-2xl p-8 md:p-12 ">
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Learn Web Development</h2>
+                   
+                    <p class="text-white md:text-2xl text-xl leading-relaxed max-w-3xl mx-auto mb-10 font-light">
+                           Master the fundamentals of Web Development including HTML, CSS and JavaScript.
+        Join my free Web Development course and become a professional web developer.
+                </p>
+      <a href="https://wa.link/vnxc5i" id="Click"
+  class="inline-flex items-center gap-3 bg-white text-green-500 font-semibold text-lg px-6 py-3 rounded-xl shadow-lg transition duration-300 hover:bg-black hover:text-white hover:ring-2 hover:ring-white"
+>
+ 
+  <i class="fa-brands fa-whatsapp text-[30px] text-green-500"></i>  Whatsapp Me
+</a>
+
+    </div>
+  </div>
+  
+</section>
+
+
+
+    <div id="education" class="max-w-7xl mx-auto px-6 py-16">
+        <!-- Header Section -->
+        <div class="text-center mb-20">
+            <div class="inline-block p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6 glow-effect">
+                <i class="fa-solid fa-user-graduate text-white text-2xl"></i>
+            </div>
+            <h1 class="text-4xl md:text-3xl font-black text-gray-800 mb-6">Education & Work Experiences</h1>
+            <p class="text-white md:text-2xl text-xl leading-relaxed max-w-3xl mx-auto  font-light">
+                A journey of continuous learning and professional growth
+            </p>
+            <div class="w-32 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto  rounded-full"></div>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="relative">
+            <!-- Timeline Line -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full timeline-line rounded-full opacity-30"></div>
+            
+            <!-- Education Section -->
+            <div class="mb-16">
+                <div class="flex justify-center mb-12">
+         <div class="inline-flex items-center gap-2 p-12 px-2 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+  <i class="fa-solid fa-graduation-cap text-blue-500 text-lg"></i>
+  <span class="education text-sm font-semibold text-blue-300 tracking-wide uppercase">Education & Work Experience</span>
+</div>
+
+                </div>
+                
+                <div class="space-y-8">
+                    <!-- Diploma Card -->
+                    <div class="flex items-center justify-center">
+                        <div class="card-hover w-full max-w-2xl bg-white rounded-3xl p-8 shadow-lg border border-slate-200 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+                            <div class="flex items-center space-x-6 relative z-10">
+                                <div class="icon-float flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
+                                    <i class="fa-solid fa-graduation-cap text-white text-3xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Diploma in Information Technology</h3>
+                                    <p class="text-slate-600 text-lg text-purple-600">Evelyn Hone College</p>
+                                    <div class="flex items-center mt-3">
+                                        <i class="fa-solid fa-calendar-days text-blue-500 mr-2"></i>
+                                        <span class="text-slate-500 font-medium">2022 - 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate Card -->
+                    <div class="flex items-center justify-center">
+                        <div class="card-hover w-full max-w-2xl bg-white rounded-3xl p-8 shadow-lg border border-slate-200 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-300 to-black rounded-full -translate-y-16 -translate-x-16 opacity-50"></div>
+                            <div class="flex items-center space-x-6 relative z-10">
+                                <div class="icon-float flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
+                                    <i class="fa-solid fa-book text-white text-3xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Grade Twelve Certificate</h3>
+                                    <p class="text-slate-600 text-lg text-purple-600">Kamwala Secondary School</p>
+                                    <div class="flex items-center mt-3">
+                                        <i class="fa-solid fa-calendar-days text-green-500 mr-2"></i>
+                                        <span class="text-slate-500 font-medium">2017 - 2019</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div>
+                <!-- Internship Card -->
+                <div class="flex items-center justify-center ">
+                    <div class="card-hover w-full max-w-2xl bg-white rounded-3xl p-8 shadow-lg border border-slate-200 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-full -translate-y-20 translate-x-20 opacity-50"></div>
+                        <div class="flex items-center space-x-6 relative z-10">
+                            <div class="icon-float flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg">
+                                <i class="fa-solid fa-briefcase text-white text-3xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-slate-800 mb-2">Web Developer Intern</h3>
+                                <a href="https://www.zedsms.app" target="_blank" class="text-purple-600 hover:text-purple-700 text-lg font-medium transition-colors duration-200 hover:underline">
+                                    ZedSMS Technology
+                                    <i class="fa-solid fa-external-link ml-2 text-sm"></i>
+                                </a>
+                                <div class="flex items-center mt-3">
+                                    <i class="fa-solid fa-calendar-days text-purple-500 mr-2"></i>
+                                    <span class="text-slate-500 font-medium">Nov 2024 - Feb 2025</span>
+                                </div>
+                                <div class="mt-4 flex items-center">
+                                    <div class="flex items-center px-3 py-1 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full">
+                                        <i class="fa-solid fa-code text-purple-600 text-sm mr-2"></i>
+                                        <span class="text-purple-700 text-sm font-medium">Web Development</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="fixed top-20 left-10 w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 blur-xl"></div>
+
+    </div>
+
+    <script>
+        // Add smooth scroll animations
+        const cards = document.querySelectorAll('.card-hover');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add interactive hover effects
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+                card.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+            });
+        });
+    </script>    
+            
+    <section id="portfolio" class="py-5 text-center mt-12 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-10 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-20 animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-24 h-24 bg-blue-200 rounded-full opacity-30 animate-float" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-pink-200 rounded-full opacity-25 animate-float" style="animation-delay: -4s;"></div>
+        
+        <div class="relative z-10 ">
+            <h2 class="text-4xl md:text-5xl font-black text-black mb-6">More of My Work</h2>
+            <p class="text-gray-800 md:text-2xl text-xl leading-relaxed max-w-3xl mx-auto mb-16 font-light">
+                    Discover my creative journey through these carefully crafted design pieces
+                </p>
+               
+           
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-6">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-card relative group rounded-3xl p-4 transition-all duration-500 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="overflow-hidden rounded-2xl relative">
+                        <img 
+                            src="images/Salon D.jpg.png"
+                            alt="Salon D - Social Media Design"
+                            class="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110"
+                        >
+                        <div class="image-overlay absolute inset-0 opacity-0 group-hover:opacity-90 transition-all duration-500 flex items-center justify-center">
+                            <div class="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-bold mb-2">View Project</h4>
+                                <p class="text-sm opacity-90">Click to explore</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-left px-2">
+                        <h3 class="text-gray-900 text-2xl font-bold mb-2">Salon Design</h3>
+                        <p class="text-gray-600 text-base">Social Media Design</p>
+                        <div class="flex mt-4 space-x-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">Branding</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Social Media</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-card relative group rounded-3xl p-4 transition-all duration-500 animate-fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="overflow-hidden rounded-2xl relative">
+                        <img 
+                            src="images/bl.jpg"
+                            alt="4Ways Poster Design"
+                            class="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110"
+                        >
+                        <div class="image-overlay absolute inset-0 opacity-0 group-hover:opacity-90 transition-all duration-500 flex items-center justify-center">
+                            <div class="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-bold mb-2">View Project</h4>
+                                <p class="text-sm opacity-90">Click to explore</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-left px-2">
+                        <h3 class="text-gray-900 text-2xl font-bold mb-2">Poster Design</h3>
+                        <p class="text-gray-600 text-base">Creative Campaign</p>
+                        <div class="flex mt-4 space-x-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Print Design</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">Campaign</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-card relative group rounded-3xl p-4 transition-all duration-500 animate-fade-in-up" style="animation-delay: 0.8s;">
+                    <div class="overflow-hidden rounded-2xl relative">
+                        <img 
+                            src="images/4ways.png"
+                            alt="Brand Launch Creative"
+                            class="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110"
+                        >
+                        <div class="image-overlay absolute inset-0 opacity-0 group-hover:opacity-90 transition-all duration-500 flex items-center justify-center">
+                            <div class="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-bold mb-2">View Project</h4>
+                                <p class="text-sm opacity-90">Click to explore</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-left px-2">
+                        <h3 class="text-gray-900 text-2xl font-bold mb-2">Brand Launch</h3>
+                        <p class="text-gray-600 text-base">Creative Campaign</p>
+                        <div class="flex mt-4 space-x-2">
+                            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">Branding</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">Launch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enhanced CTA Button -->
+            <div class="mt-16 animate-fade-in-up" style="animation-delay: 1s;">
+                <button class="cta-button text-white  bg-blue-300  px-12 py-4 rounded-2xl transition-all duration-300 hover:scale-105  hover:shadow-2xl transform">
+                    More My Graphic Design Work
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+<script>
+  (function(){
+    emailjs.init("WP5X-XVuZW7hgE8zo"); // Public Key
+  })();
+</script>
+
+
+
+ <section class="py-5 relative overflow-hidden ">
+      
+        <div class="absolute top-10 left-10 w-32 h-32 bg-purple-200 rounded-full opacity-20 animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-24 h-24 bg-blue-200 rounded-full opacity-30 animate-float" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-pink-200 rounded-full opacity-25 animate-float" style="animation-delay: -4s;"></div>
+    
+        <div class="max-w-2xl mx-auto px-6 relative z-10">
+            <!-- Header Section -->
+            <div class="text-center mb-12 animate-fade-in-up">
+                <h1 id="contacts" class="text-5xl md:text-6xl font-black text-blue-400 mb-4 mt-12" >
+                    Get In Touch
+                </h1>
+                 <p class="text-gray-800 md:text-2xl text-xl leading-relaxed max-w-3xl mx-auto mb-16 font-light">
+                     Ready to start your next project? Let's collaborate and create something 
+                    <span class="font-semibold text-blue-400">amazing</span> together!
+                </p>
+               
+               
+                
+                <!-- Contact Info Cards -->
+                <div class="flex flex-wrap justify-center gap-4 mt-8">
+                    <div class="flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                        <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">mwisajones2000@gmail.com</span>
+                    </div>
+                    <div class="flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-700">+260 972551954</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="glass-card rounded-3xl p-8 md:p-12 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <form id="contact-form" method="post" action="" class="space-y-8">
+                    <!-- Name Field -->
+                    <div class="input-container relative">
+                        <label for="name" class="label-float absolute left-4 top-4 text-gray-600 font-medium pointer-events-none">
+                            Name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="input-focus w-full px-4 pt-8 pb-4 rounded-2xl border-2 border-gray-200 bg-gray-50/50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-all duration-300"
+                            required
+                        >
+                        <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transform scale-x-0 transition-transform duration-300 origin-left group-focus-within:scale-x-100"></div>
+                    </div>
+                    
+                    <!-- Email Field -->
+                    <div class="input-container relative">
+                        <label for="email" class="label-float absolute left-4 top-4 text-gray-600 font-medium pointer-events-none">
+                            Email 
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="input-focus w-full px-4 pt-8 pb-4 rounded-2xl border-2 border-gray-200 bg-gray-50/50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-all duration-300"
+                            required
+                        >
+                    </div>
+                    
+                    <!-- Message Field -->
+                    <div class="input-container relative">
+                        <label for="message" class="label-float absolute left-4 top-4 text-gray-600 font-medium pointer-events-none">
+                           Write a message
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="6"
+                            class="input-focus w-full px-4 pt-8 pb-4 rounded-2xl border-2 border-gray-200 bg-gray-50/50 focus:outline-none focus:border-indigo-500 focus:bg-white resize-none transition-all duration-300"
+                            required
+                        ></textarea>
+                    </div>
+                    
+                    
+                    <!-- Services Checkboxes -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-gray-800">Services Needed</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="services[]" value="branding" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="text-gray-700 font-medium">Brand Identity</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="services[]" value="web-design" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="text-gray-700 font-medium">Web Design</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="services[]" value="social-media" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="text-gray-700 font-medium">I.T Support</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="services[]" value="social-media" class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="text-gray-700 font-medium">Graphic Design</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="text-center pt-6">
+                        <button 
+                            type="submit" 
+                            class="send-button group bg-blue-200 px-12 py-4 text-black font-bold text-lg rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl transform focus:outline-none focus:ring-4 focus:ring-purple-300"
+                        >
+                            <span class="flex items-center justify-center space-x-2">
+                                <span>Send Message</span>
+                              
+                            </span>
+                        </button>
+                    </div>
+                    
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="success-message" class="hidden bg-green-50 border border-green-200 rounded-2xl p-6 text-center">
+                        <div class="flex items-center justify-center space-x-2 text-green-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="font-semibold" id="Success">Message sent successfully!</span>
+                        </div>
+                        <p class="text-green-600 mt-2">I'll get back to you within 24 hours.</p>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Additional Contact Info -->
+            <div class="mt-12 text-center animate-fade-in-up" style="animation-delay: 0.6s;">
+                 <p class="text-gray-800 md:text-2xl text-xl leading-relaxed max-w-3xl mx-auto mb-16 font-light">
+                    Prefer to reach out directly?
+                </p>
+        
+                <div class="flex justify-center space-x-6">
+                    <a href="https://web.facebook.com/profile.php?id=61558736182897" class="flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+</svg>
+                        
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.pinterest.com/jonesmwisa/_profile/" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                        </svg>
+                        <span>Pinterest</span>
+                    </a>
+                    <a href="www.linkedin.com/in/jones-mwisa-117a37294" class="flex items-center space-x-2 text-blue-700 hover:text-blue-900 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm('service_i9fndam', 'template_zrb74rl', this)
+    .then(() => {
+      alert("Message sent successfully!");
+    }, (error) => {
+      console.error('Failed...', error);
+    });
+});
+
+</script>
+
+
+<!-- Footer -->
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 mt-12">
+  <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between text-center text-sm text-gray-500 dark:text-gray-400">
+    <p>&copy; 2025 <span class="font-semibold text-gray-800 dark:text-white">Mwísa Jones</span>. All Rights Reserved.</p>
+    <div class="mt-4 md:mt-0 flex gap-4">
+      <a href="mailto:mwisajones2000@gmail.com" class="hover:underline">Email</a>
+      <a href="tel:+260972551954" class="hover:underline">Call</a>
+      <a href="#body" class="hover:underline">Back to Top</a>
+    </div>
+  </div>
+</footer>
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const closeMenu = document.getElementById("close-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("-translate-x-full");
+  });
+
+  closeMenu.addEventListener("click", () => {
+    mobileMenu.classList.add("-translate-x-full");
+  });
+</script>
+</body>
+
+
+
+
+</body>
+</html>
