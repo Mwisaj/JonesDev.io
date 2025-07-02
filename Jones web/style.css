@@ -1,0 +1,13 @@
+ /* Hover Effect */
+ .hover\:scale-105:hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.animate-scroll {
+    display: flex;
+    animation: scroll 15s linear infinite;
+    width: max-content;
+}
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
